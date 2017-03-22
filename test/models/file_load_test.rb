@@ -4,11 +4,11 @@ class FileLoadTest < ActiveSupport::TestCase
   test "filename checks:  required, file exists" do
     fl = FileLoad.new
     assert_not(fl.save, "blank filename saved")
-    assert(fl.errors[:filename].join(", ").match?(/blank/), "blank-file error did not include 'blank'")
+    assert(fl.errors[:filename].join(", ").match(/blank/), "blank-file error did not include 'blank'")
 
     fl.filename= 'notafile'
     assert_not(fl.save, "notafile saved")
-    assert(fl.errors[:filename].join(", ").match?(/not found/), "error did not include 'not found'")
+    assert(fl.errors[:filename].join(", ").match(/not found/), "error did not include 'not found'")
 
     fl.filename = 'test/fixtures/files/food-vendors.csv'
     assert(fl.valid?, "valid file failed:  #{fl.errors.full_messages}")
