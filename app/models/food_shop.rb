@@ -3,10 +3,11 @@ class FoodShop < ApplicationRecord
 
   def serialized_data
     {
-      village:    village, 
-      code:       code, 
-      name:       name,
-      food_type:  food_type
+      village:      village, 
+      code:         code, 
+      name:         name,
+      service_type: service_type
     }
   end
+  
 end

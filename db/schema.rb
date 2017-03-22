@@ -10,22 +10,23 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170322142331) do
+ActiveRecord::Schema.define(version: 20170322144943) do
 
   create_table "file_loads", force: :cascade do |t|
     t.string   "filename"
     t.text     "results"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string   "type"
   end
 
   create_table "food_shops", force: :cascade do |t|
     t.string   "village"
-    t.string   "code"
     t.string   "name"
-    t.string   "food_type"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.string   "service_type"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+    t.string   "code"
   end
 
 end

@@ -15,20 +15,14 @@ class FileLoad < ApplicationRecord
   end
   
   before_create :load_file
-  
+
   def load_file
-    food_types = []
+    food_shops = []
     CSV.foreach(full_path, headers: true) do |row|
-      food_type = FoodShop.create(
-        village:    row["Village"], 
-        code:       row["Merchant Code"], 
-        name:       row["Merchant Name"],
-        food_type:  row["Food Type"]
-      )
-      food_types << food_type.serialized_data
+      food_shop = create_food_shop row
+      food_shops << food_shop.serialized_data
     end
-    self.results = {row_count: food_types.count, rows: food_types}
-  end
-      
+    self.results = {row_count: food_shops.count, rows: food_shops}
+  end   
   
 end
